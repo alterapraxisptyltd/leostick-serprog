@@ -13,7 +13,6 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #include <avr/io.h>
 #include <util/delay.h>
 #include <string.h>
@@ -76,14 +75,14 @@ void setup_uart( unsigned long bauds )
 
 	int freq = (F_CPU / 4 / bauds -1) /2 ;
 	/* Set baud rate */
-	UBRR0H = (unsigned char)(freq>>8);
-	UBRR0L = (unsigned char)freq;
+	UBRR1H = (unsigned char)(freq>>8);
+	UBRR1L = (unsigned char)freq;
 	/* Enable baud rate doubler */
-	UCSR0A |= (1<<U2X0);
+	UCSR1A |= (1<<U2X1);
 	/* Enable receiver, transmitter and RX interrupt enable */
-	UCSR0B = (1<<RXEN0)|(1<<TXEN0)|(1<<RXCIE0);
+	UCSR1B = (1<<RXEN1)|(1<<TXEN1)|(1<<RXCIE1);
 	/* Set frame format: 8data, 1stop bit */
-	UCSR0C = (3<<UCSZ00);
+	UCSR1C = (3<<UCSZ10);
 }
 
 void select_chip(void)
@@ -124,17 +123,17 @@ char readwrite_spi(char c)
 void putchar_uart( unsigned char data )
 {
 	/* Wait for empty transmit buffer */
-	loop_until_bit_is_set(UCSR0A, UDRE0);
+	loop_until_bit_is_set(UCSR1A, UDRE1);
 	/* Put data into buffer, sends the data */
 	_delay_us(10); //8us mostly stable, 10us to be sure
-	UDR0 = data;
+	UDR1 = data;
 }
 
 char getchar_uart(void)
 {
 	/* Wait for the char to arrive in the buffer */
-	loop_until_bit_is_set(UCSR0A, RXC0);
-	return UDR0;
+	loop_until_bit_is_set(UCSR1A, RXC1);
+	return UDR1;
 }
 
 void word_uart(char * str)
@@ -263,7 +262,7 @@ void handle_command(unsigned char command)
 
 ISR(USART_RX_vect)
 {
-	handle_command(UDR0);
+	handle_command(UDR1);
 }
 
 int main (void)
