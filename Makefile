@@ -7,8 +7,8 @@ OBJCOPY=avr-objcopy
 BIN_FORMAT=ihex
 
 PORT=/dev/ttyACM0
-BAUD=115200
-PROTOCOL=arduino
+BAUD=57600
+PROTOCOL=avr109
 PART=$(MCU)
 AVRDUDE=avrdude -F -V
 AVRSIZE=avr-size -A
