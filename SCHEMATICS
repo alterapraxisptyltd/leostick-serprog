@@ -2,8 +2,8 @@ Left pins of the BIOS chip:
 --------------------------------------------------------
 [pin1 of the bios chip] /CS<->10k resistor<->VCC
 
-[pin1 of the bios chip] /CS<->Arduino pin10(SS, PORTB2)
-[pin2 of the bios chip] DO<->Arduino pin12(MISO, PORTB4)
+[pin1 of the bios chip] /CS<->Arduino pin8(SS, PORTB0)
+[pin2 of the bios chip] DO<->Arduino pin11(MISO, PORTB3)
 [pin3 of the bios chip] /WP<->VCC
 [pin4 of the bios chip] GND<->GND on the power pins
 
@@ -11,8 +11,8 @@ Right pins of the BIOS chip:
 --------------------------------------------------------
 [pin8 of the bios chip] VCC<->+3.3V on the power pins of the Arduino
 [pin7 of the bios chip] /HOLD<->VCC
-[pin6 of the bios chip] CLK<->Arduino pin13(SCK, PORTB5)
-[pin5 of the bios chip] DIO<->Arduino pin11(MOSI, PORTB3)
+[pin6 of the bios chip] CLK<->Arduino pin9(SCK, PORTB1)
+[pin5 of the bios chip] DIO<->Arduino pin10(MOSI, PORTB2)
 
-The Bios chip used is a W25X80. 
-The Arduino is an arduino uno.
+The Bios chip used is a ???. 
+The Arduino is an leostick.
