@@ -46,7 +46,7 @@
 #define S_CMD_O_SPIOP      0x13UL /* Perform SPI operation.                       */
 
 #define SPI_PORT PORTB
-#define SS PORTB0 /* port 8 */
+#define SS PORTB4 /* port 28 (M14;pin9) */
 #define SCK PORTB1 /* port 9 */
 #define MOSI PORTB2 /* port 10 */
 #define MISO PORTB3 /* port 11 */
